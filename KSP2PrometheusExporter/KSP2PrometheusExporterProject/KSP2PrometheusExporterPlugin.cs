@@ -64,6 +64,14 @@ public class KSP2PrometheusExporterPlugin : BaseSpaceWarpPlugin
 
         Logger.LogInfo("Started Prometheus exporter on port 9102");
 
+        new MetricPusher(new MetricPusherOptions
+        {
+            Endpoint = "http://51.15.51.177:9091/metrics",
+            Job = "ksp2",
+        }).Start();
+
+        Logger.LogInfo("Started Prometheus metrics pusher to push metrics to http://51.15.51.177:9091/metrics");
+
         //// Register Flight AppBar button
         //Appbar.RegisterAppButton(
         //    "KSP2 Prometheus Exporter",
