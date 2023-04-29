@@ -60,6 +60,8 @@ public class KSP2PrometheusExporterPlugin : BaseSpaceWarpPlugin
             }
         });
 
+        Metrics.SuppressDefaultMetrics();
+
         new MetricServer(9102).Start();
 
         Logger.LogInfo("Started Prometheus exporter on port 9102");
