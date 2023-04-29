@@ -1,0 +1,22 @@
+{
+  "mod_id": "ksp2_prometheus_exporter",
+  "author": "Goddchen",
+  "name": "KSP2 Prometheus Exporter",
+  "description": "Prometheus exporter for telemetry data.",
+  "source": "https://github.com/Goddchen/KSP2PrometheusExporter",
+  "version": "0.0.1",
+  "version_check": "",
+  "dependencies": [
+    {
+      "id":  "SpaceWarp",
+      "version": {
+        "min": "1.1.1",
+        "max": "*"
+      }
+    }
+  ],
+  "ksp2_version": {
+    "min": "0.1.0",
+    "max": "*"
+  }
+}

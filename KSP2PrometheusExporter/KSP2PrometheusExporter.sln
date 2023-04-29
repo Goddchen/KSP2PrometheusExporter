@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{92F40559-6075-474F-888B-DFDB9C041F34}") = "KSP2PrometheusExporter", "KSP2PrometheusExporterProject\KSP2PrometheusExporter.csproj", "{3AE934F6-6AF6-430F-A87B-2534949B9376}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3AE934F6-6AF6-430F-A87B-2534949B9376}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AE934F6-6AF6-430F-A87B-2534949B9376}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AE934F6-6AF6-430F-A87B-2534949B9376}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AE934F6-6AF6-430F-A87B-2534949B9376}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

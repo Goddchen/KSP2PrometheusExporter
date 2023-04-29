@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>true</ImplicitUsings>
+        <AssemblyName>de.goddchen.ksp2.prometheus_exporter</AssemblyName>
+        <Product>KSP2 Prometheus Exporter</Product>
+        <Description>Prometheus exporter for telemetry data.</Description>
+        <Version>0.0.1</Version>
+        <RestoreAdditionalProjectSources>
+            https://nuget.spacewarp.org/v3/index.json
+        </RestoreAdditionalProjectSources>
+        <RootNamespace>KSP2PrometheusExporter</RootNamespace>
+        <ModId Condition="'$(ModId)'==''">ksp2_prometheus_exporter</ModId>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="Assembly-CSharp">
+            <HintPath>..\external_dlls\Assembly-CSharp.dll</HintPath>
+            <Publicize>true</Publicize>
+            <Private>false</Private>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+        <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.0" PrivateAssets="all" />
+        <PackageReference Include="BepInEx.Core" Version="5.*" />
+        <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+        <PackageReference Include="HarmonyX" Version="2.10.1" />
+        <PackageReference Include="prometheus-net" Version="8.0.0" />
+        <PackageReference Include="SpaceWarp" Version="1.1.1" />
+        <PackageReference Include="UnityEngine.Modules" Version="2020.3.33" IncludeAssets="compile" />
+    </ItemGroup>
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+        <Exec Command="rm -rf &quot;$(ProjectDir)..\$(ConfigurationName)\&quot;&#xA;echo V | xcopy /y /s &quot;$(ProjectDir)..\$(ModId)\&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\&quot;&#xA;echo D | xcopy /y &quot;$(TargetPath)&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\$(ModId).dll&quot;&#xA;if $(ConfigurationName) == Debug echo D | xcopy /y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\$(ModId).pdb&quot;&#xA;xcopy /y &quot;$(ProjectDir)..\LICENSE&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\&quot;&#xA;echo D | xcopy /y &quot;$(ProjectDir)..\README.md&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\README.txt&quot;" />
+    </Target>
+</Project>
