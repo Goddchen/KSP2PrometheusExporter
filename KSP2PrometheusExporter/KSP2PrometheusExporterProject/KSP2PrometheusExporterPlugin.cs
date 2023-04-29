@@ -70,6 +70,7 @@ public class KSP2PrometheusExporterPlugin : BaseSpaceWarpPlugin
         {
             Endpoint = "http://51.15.51.177:9091/metrics",
             Job = "ksp2",
+            ReplaceOnPush = true,
         }).Start();
 
         Logger.LogInfo("Started Prometheus metrics pusher to push metrics to http://51.15.51.177:9091/metrics");
