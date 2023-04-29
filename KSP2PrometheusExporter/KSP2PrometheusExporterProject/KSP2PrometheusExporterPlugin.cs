@@ -31,10 +31,51 @@ public class KSP2PrometheusExporterPlugin : BaseSpaceWarpPlugin
 
     public static KSP2PrometheusExporterPlugin Instance { get; set; }
 
+    private static readonly Prometheus.Gauge ActiveVesselVehicleAltitudeFromSeaLevel = Metrics.CreateGauge(
+        "ksp2_active_vessel_vehicle_altitude_from_sea_level",
+        "Altitude from sea level of the active vessel vehicle",
+        new GaugeConfiguration { SuppressInitialValue = true }
+        );
+    private static readonly Prometheus.Gauge ActiveVesselVehicleGeeForce = Metrics.CreateGauge(
+        "ksp2_active_vessel_vehicle_gee_force",
+        "G force of the active vessel vehicle",
+        new GaugeConfiguration { SuppressInitialValue = true }
+        );
+    private static readonly Prometheus.Gauge ActiveVesselVehicleHorizontalSpeed = Metrics.CreateGauge(
+        "ksp2_active_vessel_vehicle_horizontal_speed",
+        "Horizontal speed of the active vessel vehicle",
+        new GaugeConfiguration { SuppressInitialValue = true }
+        );
+    private static readonly Prometheus.Gauge ActiveVesselVehicleMainThrottle = Metrics.CreateGauge(
+        "ksp2_active_vessel_vehicle_main_throttle",
+        "Main throttle of the active vessel vehicle",
+        new GaugeConfiguration { SuppressInitialValue = true }
+        );
     private static readonly Prometheus.Gauge ActiveVesselVehicleOrbitalSpeed = Metrics.CreateGauge(
         "ksp2_active_vessel_vehicle_orbital_speed",
         "Orbital speed of the active vessel vehicle",
-        new GaugeConfiguration { SuppressInitialValue = true });
+        new GaugeConfiguration { SuppressInitialValue = true }
+        );
+    private static readonly Prometheus.Gauge ActiveVesselVehiclePitch = Metrics.CreateGauge(
+        "ksp2_active_vessel_vehicle_pitch",
+        "Pitch of the active vessel vehicle",
+        new GaugeConfiguration { SuppressInitialValue = true }
+        );
+    private static readonly Prometheus.Gauge ActiveVesselVehicleRoll = Metrics.CreateGauge(
+        "ksp2_active_vessel_vehicle_roll",
+        "Roll of the active vessel vehicle",
+        new GaugeConfiguration { SuppressInitialValue = true }
+        );
+    private static readonly Prometheus.Gauge ActiveVesselVehicleVerticalSpeed = Metrics.CreateGauge(
+        "ksp2_active_vessel_vehicle_vertical_speed",
+        "Vertical speed of the active vessel vehicle",
+        new GaugeConfiguration { SuppressInitialValue = true }
+        );
+    private static readonly Prometheus.Gauge ActiveVesselVehicleYaw = Metrics.CreateGauge(
+        "ksp2_active_vessel_vehicle_yaw",
+        "Yaw of the active vessel vehicle",
+        new GaugeConfiguration { SuppressInitialValue = true }
+        );
 
     /// <summary>
     /// Runs when the mod is first initialized.
@@ -45,18 +86,41 @@ public class KSP2PrometheusExporterPlugin : BaseSpaceWarpPlugin
 
         Instance = this;
 
-        Metrics.DefaultRegistry.AddBeforeCollectCallback(async (cancel) =>
+        Metrics.DefaultRegistry.AddBeforeCollectCallback(() =>
         {
             VesselVehicle activeVesselVehicle = Vehicle.ActiveVesselVehicle;
             if (activeVesselVehicle != null)
             {
                 ActiveVesselVehicleOrbitalSpeed.Publish();
-                ActiveVesselVehicleOrbitalSpeed.Set(Vehicle.ActiveVesselVehicle.OrbitalSpeed);
-                //ActiveVesselVehicleOrbitalSpeed.Set(12.4);
+                ActiveVesselVehicleOrbitalSpeed.Set(activeVesselVehicle.OrbitalSpeed);
+                ActiveVesselVehicleGeeForce.Publish();
+                ActiveVesselVehicleGeeForce.Set(activeVesselVehicle.GeeForce);
+                ActiveVesselVehicleHorizontalSpeed.Publish();
+                ActiveVesselVehicleHorizontalSpeed.Set(activeVesselVehicle.HorizontalSpeed);
+                ActiveVesselVehicleMainThrottle.Publish();
+                ActiveVesselVehicleMainThrottle.Set(activeVesselVehicle.mainThrottle);
+                ActiveVesselVehicleAltitudeFromSeaLevel.Publish();
+                ActiveVesselVehicleAltitudeFromSeaLevel.Set(activeVesselVehicle.AltitudeFromSeaLevel);
+                ActiveVesselVehiclePitch.Publish();
+                ActiveVesselVehiclePitch.Set(activeVesselVehicle.pitch);
+                ActiveVesselVehicleRoll.Publish();
+                ActiveVesselVehicleRoll.Set(activeVesselVehicle.roll);
+                ActiveVesselVehicleVerticalSpeed.Publish();
+                ActiveVesselVehicleVerticalSpeed.Set(activeVesselVehicle.VerticalSpeed);
+                ActiveVesselVehicleYaw.Publish();
+                ActiveVesselVehicleYaw.Set(activeVesselVehicle.yaw);
             }
             else
             {
+                ActiveVesselVehicleAltitudeFromSeaLevel.Unpublish();
+                ActiveVesselVehicleGeeForce.Unpublish();
+                ActiveVesselVehicleHorizontalSpeed.Unpublish();
+                ActiveVesselVehicleMainThrottle.Unpublish();
                 ActiveVesselVehicleOrbitalSpeed.Unpublish();
+                ActiveVesselVehiclePitch.Unpublish();
+                ActiveVesselVehicleRoll.Unpublish();
+                ActiveVesselVehicleVerticalSpeed.Unpublish();
+                ActiveVesselVehicleYaw.Unpublish();
             }
         });
 
