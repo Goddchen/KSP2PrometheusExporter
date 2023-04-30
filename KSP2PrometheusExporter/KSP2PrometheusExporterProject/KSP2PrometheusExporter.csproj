@@ -21,6 +21,15 @@
             <Publicize>true</Publicize>
             <Private>false</Private>
         </Reference>
+        <Reference Include="Microsoft.Extensions.Http">
+          <HintPath>..\external_dlls\Microsoft.Extensions.Http.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.ObjectPool">
+          <HintPath>..\external_dlls\Microsoft.Extensions.ObjectPool.dll</HintPath>
+        </Reference>
+        <Reference Include="Prometheus.NetStandard">
+          <HintPath>..\external_dlls\Prometheus.NetStandard.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
@@ -33,6 +42,6 @@
         <PackageReference Include="UnityEngine.Modules" Version="2020.3.33" IncludeAssets="compile" />
     </ItemGroup>
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-        <Exec Command="rm -rf &quot;$(ProjectDir)..\$(ConfigurationName)\&quot;&#xA;echo V | xcopy /y /s &quot;$(ProjectDir)..\$(ModId)\&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\&quot;&#xA;echo D | xcopy /y &quot;$(TargetPath)&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\$(ModId).dll&quot;&#xA;if $(ConfigurationName) == Debug echo D | xcopy /y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\$(ModId).pdb&quot;&#xA;xcopy /y &quot;$(ProjectDir)..\LICENSE&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\&quot;&#xA;echo D | xcopy /y &quot;$(ProjectDir)..\README.md&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\README.txt&quot;" />
+        <Exec Command="rm -rf &quot;$(ProjectDir)..\$(ConfigurationName)\&quot;&#xA;echo V | xcopy /y /s &quot;$(ProjectDir)..\$(ModId)\&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\&quot;&#xA;echo D | xcopy /y &quot;$(TargetPath)&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\$(ModId).dll&quot;&#xA;if $(ConfigurationName) == Debug echo D | xcopy /y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\$(ModId).pdb&quot;&#xA;xcopy /y &quot;$(ProjectDir)..\LICENSE&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\&quot;&#xA;echo D | xcopy /y &quot;$(ProjectDir)..\README.md&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\README.txt&quot;&#xD;&#xA;echo D | xcopy /y &quot;$(ProjectDir)..\external_dlls\Microsoft.Extensions.Http.dll&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\Microsoft.Extensions.Http.dll&quot;&#xD;&#xA;echo D | xcopy /y &quot;$(ProjectDir)..\external_dlls\Microsoft.Extensions.ObjectPool.dll&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\Microsoft.Extensions.ObjectPool.dll&quot;&#xD;&#xA;echo D | xcopy /y &quot;$(ProjectDir)..\external_dlls\Prometheus.NetStandard.dll&quot; &quot;$(ProjectDir)..\$(ConfigurationName)\BepInEx\plugins\$(ModId)\Prometheus.NetStandard.dll&quot;" />
     </Target>
 </Project>

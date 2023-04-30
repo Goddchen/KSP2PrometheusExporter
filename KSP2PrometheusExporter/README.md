@@ -1,2 +1,3 @@
 # KSP2 Prometheus Exporter
-Prometheus exporter for telemetry data.
+
+See [root README](../README.md).
