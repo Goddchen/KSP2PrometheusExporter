@@ -4,7 +4,7 @@ A Prometheus exporter for all kind of KSP2 telemetry data and metrics.
 
 ## Installation
 
-* Download from [SpaceDock](https://spacedock.info/kerbal-space-program-2)
+* Download from [SpaceDock](https://spacedock.info/mod/3370/KSP2%20Prometheus%20Exporter)
 * Install via [CKAN](https://github.com/KSP-CKAN/CKAN)
 
 ## Configurable settings
