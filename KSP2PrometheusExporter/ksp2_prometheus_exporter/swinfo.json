@@ -4,7 +4,7 @@
   "name": "KSP2 Prometheus Exporter",
   "description": "Prometheus exporter for telemetry data.",
   "source": "https://github.com/Goddchen/KSP2PrometheusExporter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "version_check": "",
   "dependencies": [
     {

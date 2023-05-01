@@ -8,7 +8,7 @@
         <AssemblyName>de.goddchen.ksp2.prometheus_exporter</AssemblyName>
         <Product>KSP2 Prometheus Exporter</Product>
         <Description>Prometheus exporter for telemetry data.</Description>
-        <Version>0.0.1</Version>
+        <Version>0.0.2</Version>
         <RestoreAdditionalProjectSources>
             https://nuget.spacewarp.org/v3/index.json
         </RestoreAdditionalProjectSources>
