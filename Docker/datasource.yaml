@@ -1,0 +1,10 @@
+apiVersion: 1
+
+datasources:
+  - name: KSP2 Prometheus
+    type: prometheus
+    access: proxy
+    url: http://host.docker.internal:9090
+    isDefault: true
+    version: 1
+    editable: false
